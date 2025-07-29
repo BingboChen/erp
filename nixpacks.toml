@@ -1,0 +1,4 @@
+# erp/nixpacks.toml
+[phases.setup]
+nixPkgs = ["python313", "python313Packages.pip", "python313Packages.virtualenv"] # Specifica Python 3.13 e le sue dipendenze
+aptPkgs = ["gcc", "libpq-dev"] # Aggiungi pacchetti necessari per psycopg2
