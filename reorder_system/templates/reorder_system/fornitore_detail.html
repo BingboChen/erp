@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Fornitore: {{ fornitore.nome }} - Max Factory</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 10px; }
+        strong { display: inline-block; width: 120px; }
+        a { text-decoration: none; color: #007bff; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Dettagli Fornitore: {{ fornitore.nome }}</h1>
+
+    <ul>
+        <li><strong>ID Databricks:</strong> {{ fornitore.id_fornitore_databricks }}</li>
+        <li><strong>Indirizzo:</strong> {{ fornitore.indirizzo }}</li>
+        <li><strong>CAP:</strong> {{ fornitore.cap }}</li>
+        <li><strong>Città:</strong> {{ fornitore.citta }}</li>
+        <li><strong>Provincia:</strong> {{ fornitore.prov }}</li>
+        <li><strong>Nazione:</strong> {{ fornitore.nazione }}</li>
+        <li><strong>Telefono:</strong> {{ fornitore.tel }}</li>
+        <li><strong>Cellulare:</strong> {{ fornitore.cell }}</li>
+        <li><strong>Email:</strong> {{ fornitore.email }}</li>
+        <li><strong>Codice Fiscale:</strong> {{ fornitore.codicefiscale }}</li>
+        <li><strong>Partita IVA:</strong> {{ fornitore.partitaiva }}</li>
+        <li><strong>Note:</strong> {{ fornitore.note }}</li>
+        <li><strong>Data Inserimento:</strong> {{ fornitore.idata }}</li>
+        <li><strong>Modalità Pagamento:</strong> {{ fornitore.paga }}</li>
+        <li><strong>Ordine Totale:</strong> {{ fornitore.ordinetot }}</li>
+        <li><strong>Minimo Ordine:</strong> {{ fornitore.minimo }}</li>
+    </ul>
+
+    <p><a href="{% url 'reorder_system:fornitori_list' %}">Torna alla lista fornitori</a></p>
+</body>
+</html>

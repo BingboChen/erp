@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os # <-- Assicurati che sia importato
 import dj_database_url # <-- Assicurati che sia importato
 from pathlib import Path
+from dotenv import load_dotenv # <-- AGGIUNGI QUESTA LINEA
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'reorder_system',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +120,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = 'static/' # <--- QUESTA RIGA MANCAVA! AGGIUNGILA QUI
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type

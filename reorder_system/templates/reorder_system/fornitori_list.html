@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Fornitori - Max Factory</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        a { text-decoration: none; color: #007bff; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Lista Fornitori</h1>
+
+    {% if fornitori %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Città</th>
+                    <th>Email</th>
+                    <th>Dettagli</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fornitore in fornitori %}
+                    <tr>
+                        <td>{{ fornitore.nome }}</td>
+                        <td>{{ fornitore.citta }}</td>
+                        <td>{{ fornitore.email }}</td>
+                        <td><a href="{% url 'reorder_system:fornitore_detail' pk=fornitore.pk %}">Visualizza</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nessun fornitore trovato.</p>
+    {% endif %}
+
+    <p><a href="/admin/">Vai all'admin di Django</a></p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Max Factory Reorder System</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; line-height: 1.6; }
+        h1 { color: #333; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 10px; }
+        a { text-decoration: none; color: #007bff; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        .section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Benvenuto nel Sistema di Riordino Max Factory</h1>
+    <p>Utilizza questa dashboard per navigare tra le varie sezioni dell'applicazione.</p>
+
+    <div class="section">
+        <h2>Navigazione</h2>
+        <ul>
+            <li><a href="{% url 'reorder_system:fornitori_list' %}">Lista Fornitori</a> - Visualizza tutti i fornitori registrati nel sistema.</li>
+            <!-- Aggiungeremo qui altri link man mano che svilupperemo nuove funzionalità -->
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Funzionalità Amministrative</h2>
+        <ul>
+            <li><a href="/admin/">Pannello di Amministrazione Django</a> - Gestisci utenti, modelli e dati tramite l'interfaccia admin.</li>
+        </ul>
+    </div>
+
+    <!-- Qui potremmo aggiungere altre sezioni in futuro, come "Statistiche", "Report", "Gestione Utenti", ecc. -->
+
+</body>
+</html>
