@@ -1,8 +1,8 @@
 # erp/Dockerfile
 
 # Utilizza un'immagine base Python pulita e stabile.
-# `python:3.13-slim-buster` è una buona scelta per le app web.
-FROM python:3.13-slim-buster
+# `python:3.12-slim-buster` è una buona scelta per le app web.
+FROM python:3.12-slim-buster
 
 # Imposta la directory di lavoro all'interno del container
 WORKDIR /app
