@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60" width="300" height="60">
+  <!-- Logo MaxFactory -->
+  <style>
+    .logo-text { font-family: Arial, sans-serif; font-weight: bold; }
+    .main-text { fill: #333; }
+    .sub-text { fill: #666; font-size: 12px; letter-spacing: 2px; }
+  </style>
+  
+  <!-- Logo principale -->
+  <text x="10" y="35" class="logo-text main-text" font-size="28">maxFACTORY</text>
+  
+  <!-- Sottotitolo -->
+  <text x="50" y="50" class="logo-text sub-text">FASHION&amp;HOME</text>
+</svg>

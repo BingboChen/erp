@@ -1,47 +1,129 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Fornitori - Max Factory</title>
-    <style>
-        body { font-family: sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        a { text-decoration: none; color: #007bff; }
-        a:hover { text-decoration: underline; }
-    </style>
-</head>
-<body>
-    <h1>Lista Fornitori</h1>
+{% extends 'reorder_system/base.html' %}
+{% load static %}
 
+{% block title %}Lista Fornitori - Max Factory{% endblock %}
+
+{% block navigation %}
+<div class="nav-container">
+    <div class="section">
+        <ul class="nav-list">
+            <li><a href="{% url 'reorder_system:home' %}"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="{% url 'reorder_system:fornitori_list' %}" class="active">Lista Fornitori</a></li>
+            <li><a href="/admin/"><i class="fas fa-cog"></i> Pannello Admin</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .fornitori-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+    
+    .page-title {
+        color: #333;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #e74c3c;
+        padding-bottom: 10px;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    
+    .fornitori-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        box-shadow: none;
+        border: none;
+    }
+    
+    .fornitori-table th, .fornitori-table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        padding: 12px 15px;
+        text-align: left;
+    }
+    
+    .fornitori-table th {
+        background-color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+        color: #333;
+    }
+    
+    .fornitori-table tr:hover {
+        background-color: #f5f5f5;
+    }
+    
+    .view-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        background-color: #e74c3c;
+        color: #fff;
+        border-radius: 4px;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+    
+    .view-btn:hover {
+        background-color: #c0392b;
+        color: #fff;
+    }
+    
+    .empty-message {
+        text-align: center;
+        padding: 30px;
+        background-color: #f8f8f8;
+        border-radius: 4px;
+        color: #666;
+    }
+    
+    .admin-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: #666;
+        font-size: 14px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="fornitori-container">
+    <h1 class="page-title">Lista Fornitori</h1>
+    
     {% if fornitori %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Città</th>
-                    <th>Email</th>
-                    <th>Dettagli</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for fornitore in fornitori %}
-                    <tr>
-                        <td>{{ fornitore.nome }}</td>
-                        <td>{{ fornitore.citta }}</td>
-                        <td>{{ fornitore.email }}</td>
-                        <td><a href="{% url 'reorder_system:fornitore_detail' pk=fornitore.pk %}">Visualizza</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <table class="fornitori-table">
+        <thead>
+            <tr>
+                <th>NOME</th>
+                <th>CITTÀ</th>
+                <th>EMAIL</th>
+                <th>DETTAGLI</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fornitore in fornitori %}
+            <tr>
+                <td>{{ fornitore.nome }}</td>
+                <td>{{ fornitore.citta }}</td>
+                <td>{{ fornitore.email }}</td>
+                <td>
+                    <a href="{% url 'reorder_system:fornitore_detail' pk=fornitore.pk %}" class="view-btn">Visualizza</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
-        <p>Nessun fornitore trovato.</p>
+    <div class="empty-message">
+        <p>Nessun fornitore trovato. Aggiungi fornitori tramite il pannello di amministrazione.</p>
+        <a href="/admin/reorder_system/fornitore/add/" class="admin-link">Aggiungi Fornitore</a>
+    </div>
     {% endif %}
-
-    <p><a href="/admin/">Vai all'admin di Django</a></p>
-</body>
-</html>
+</div>
+{% endblock %}

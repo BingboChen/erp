@@ -1,0 +1,147 @@
+/* Stili specifici per il sistema di riordino */
+
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+/* Stili per la barra di navigazione */
+.nav-container {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    box-shadow: none;
+    margin-top: 0;
+}
+
+.nav-container .section {
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start;
+}
+
+.nav-list li {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.nav-list li:before {
+    display: none;
+}
+
+.nav-list a {
+    display: block;
+    padding: 10px 20px 10px 0;
+    color: #333;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-align: left;
+    border-bottom: 3px solid transparent;
+}
+
+.nav-list a:hover, .nav-list a.active {
+    color: #e74c3c;
+}
+
+.nav-list a.active {
+    border-bottom: 3px solid #e74c3c;
+}
+
+/* Stili per il contenuto principale */
+.section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.section li:before {
+    content: '•';
+    color: #e74c3c;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.section a {
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.section a:hover {
+    color: #e74c3c;
+}
+
+/* Media queries per responsività della navigazione */
+@media (max-width: 768px) {
+    .nav-list {
+        flex-wrap: wrap;
+    }
+    
+    .nav-list li {
+        flex: 0 0 50%;
+    }
+    
+    .nav-list a {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-list li {
+        flex: 0 0 100%;
+    }
+}
+
+/* Stile per il pannello admin */
+.admin-panel {
+    background-color: #f8f8f8;
+    border-left: 4px solid #e74c3c;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.admin-panel a {
+    display: inline-flex;
+    align-items: center;
+    color: #666;
+    font-weight: 500;
+}
+
+.admin-panel a:hover {
+    color: #e74c3c;
+}
+
+.admin-panel i {
+    margin-right: 8px;
+}

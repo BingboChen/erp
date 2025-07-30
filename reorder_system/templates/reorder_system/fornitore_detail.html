@@ -1,41 +1,177 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dettagli Fornitore: {{ fornitore.nome }} - Max Factory</title>
-    <style>
-        body { font-family: sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        ul { list-style: none; padding: 0; }
-        li { margin-bottom: 10px; }
-        strong { display: inline-block; width: 120px; }
-        a { text-decoration: none; color: #007bff; }
-        a:hover { text-decoration: underline; }
-    </style>
-</head>
-<body>
-    <h1>Dettagli Fornitore: {{ fornitore.nome }}</h1>
+{% extends 'reorder_system/base.html' %}
+{% load static %}
 
-    <ul>
-        <li><strong>ID Databricks:</strong> {{ fornitore.id_fornitore_databricks }}</li>
-        <li><strong>Indirizzo:</strong> {{ fornitore.indirizzo }}</li>
-        <li><strong>CAP:</strong> {{ fornitore.cap }}</li>
-        <li><strong>Città:</strong> {{ fornitore.citta }}</li>
-        <li><strong>Provincia:</strong> {{ fornitore.prov }}</li>
-        <li><strong>Nazione:</strong> {{ fornitore.nazione }}</li>
-        <li><strong>Telefono:</strong> {{ fornitore.tel }}</li>
-        <li><strong>Cellulare:</strong> {{ fornitore.cell }}</li>
-        <li><strong>Email:</strong> {{ fornitore.email }}</li>
-        <li><strong>Codice Fiscale:</strong> {{ fornitore.codicefiscale }}</li>
-        <li><strong>Partita IVA:</strong> {{ fornitore.partitaiva }}</li>
-        <li><strong>Note:</strong> {{ fornitore.note }}</li>
-        <li><strong>Data Inserimento:</strong> {{ fornitore.idata }}</li>
-        <li><strong>Modalità Pagamento:</strong> {{ fornitore.paga }}</li>
-        <li><strong>Ordine Totale:</strong> {{ fornitore.ordinetot }}</li>
-        <li><strong>Minimo Ordine:</strong> {{ fornitore.minimo }}</li>
-    </ul>
+{% block title %}Dettagli Fornitore: {{ fornitore.nome }} - Max Factory{% endblock %}
 
-    <p><a href="{% url 'reorder_system:fornitori_list' %}">Torna alla lista fornitori</a></p>
-</body>
-</html>
+{% block navigation %}
+<div class="nav-container">
+    <div class="section">
+        <ul class="nav-list">
+            <li><a href="{% url 'reorder_system:home' %}"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="{% url 'reorder_system:fornitori_list' %}" class="active">Lista Fornitori</a></li>
+            <li><a href="/admin/"><i class="fas fa-cog"></i> Pannello Admin</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .fornitore-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    
+    .page-title {
+        color: #333;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #e74c3c;
+        padding-bottom: 10px;
+    }
+    
+    .fornitore-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+    }
+    
+    .fornitore-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .info-group {
+        margin-bottom: 25px;
+    }
+    
+    .info-label {
+        display: block;
+        font-weight: 600;
+        color: #666;
+        margin-bottom: 5px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    
+    .info-value {
+        font-size: 16px;
+        color: #333;
+    }
+    
+    .back-link {
+        display: inline-block;
+        margin-top: 30px;
+        color: #e74c3c;
+        font-weight: 500;
+    }
+    
+    .back-link i {
+        margin-right: 5px;
+    }
+    
+    @media (max-width: 768px) {
+        .fornitore-info {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="fornitore-container">
+    <h1 class="page-title">Dettagli Fornitore: {{ fornitore.nome }}</h1>
+    
+    <div class="fornitore-card">
+        <div class="fornitore-info">
+            <div class="info-group">
+                <span class="info-label">ID Databricks</span>
+                <span class="info-value">{{ fornitore.id_fornitore_databricks }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Indirizzo</span>
+                <span class="info-value">{{ fornitore.indirizzo }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">CAP</span>
+                <span class="info-value">{{ fornitore.cap }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Città</span>
+                <span class="info-value">{{ fornitore.citta }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Provincia</span>
+                <span class="info-value">{{ fornitore.prov }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Nazione</span>
+                <span class="info-value">{{ fornitore.nazione }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Telefono</span>
+                <span class="info-value">{{ fornitore.tel }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Cellulare</span>
+                <span class="info-value">{{ fornitore.cell }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Email</span>
+                <span class="info-value">{{ fornitore.email }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Codice Fiscale</span>
+                <span class="info-value">{{ fornitore.codicefiscale }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Partita IVA</span>
+                <span class="info-value">{{ fornitore.partitaiva }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Data Inserimento</span>
+                <span class="info-value">{{ fornitore.idata }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Modalità Pagamento</span>
+                <span class="info-value">{{ fornitore.paga }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Ordine Totale</span>
+                <span class="info-value">{{ fornitore.ordinetot }}</span>
+            </div>
+            
+            <div class="info-group">
+                <span class="info-label">Minimo Ordine</span>
+                <span class="info-value">{{ fornitore.minimo }}</span>
+            </div>
+        </div>
+        
+        {% if fornitore.note %}
+        <div class="info-group" style="grid-column: 1 / -1;">
+            <span class="info-label">Note</span>
+            <p class="info-value">{{ fornitore.note }}</p>
+        </div>
+        {% endif %}
+    </div>
+    
+    <a href="{% url 'reorder_system:fornitori_list' %}" class="back-link">
+        <i class="fas fa-arrow-left"></i> Torna alla lista fornitori
+    </a>
+</div>
+{% endblock %}
